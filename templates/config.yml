@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: accounts-filebeat-config
+  labels:
+    app: accounts
+data:
+  filebeat.yml: |
+    filebeat.inputs:
+    - type: log
+      enabled: true
+      paths:
+        - /app/logs/spring.log

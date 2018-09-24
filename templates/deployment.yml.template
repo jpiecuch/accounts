@@ -20,6 +20,10 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
+        volumeMounts:
+        - name: accounts-filebeat-volume
+          mountPath: /etc/filebeat
+          subPath: filebeat.yml
         env:
           - name: LOGGING_LEVEL_ROOT
             value: info
@@ -47,3 +51,7 @@ spec:
               secretKeyRef:
                 name: accounts-postgres-secrets
                 key: postgresql_password
+      volumes:
+      - name: accounts-filebeat-volume
+        configMap:
+            name: accounts-filebeat-config

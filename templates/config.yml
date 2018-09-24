@@ -11,3 +11,5 @@ data:
       enabled: true
       paths:
         - /app/logs/spring.log
+    output.logstash:
+      hosts: ["logstash-service:5044"]
